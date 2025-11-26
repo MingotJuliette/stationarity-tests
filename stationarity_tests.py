@@ -16,7 +16,7 @@ import statsmodels.api as sm
 max_lag = 10 
 pvalue_seuil = 0.05
 
-serie_test = pd.read_csv("C:/Users/mabil/OneDrive/Bureau/My Digital Editions/Manifest/GitHub/ma_lga_12345.csv")
+serie_test = pd.read_csv("ma_lga_12345.csv")
 df = pd.DataFrame(serie_test["MA"])
 name = "serie_test"
 
@@ -106,4 +106,5 @@ def detrend_series(data):
     X = sm.add_constant(t)
     model_trend = sm.OLS(data.iloc[:,0], X).fit()
     trend_estime = model_trend.params[0] + model_trend.params[1] * t
+
     return data.iloc[:,0] - trend_estime, trend_estime 
